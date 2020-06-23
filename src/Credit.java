@@ -1,11 +1,11 @@
 public class Credit {
-    int id_credit;
-    int id_cust;
-    String name;
-    String loanpurpose;
-    String term;
-    String firstpay;
-    int sum;
+    private int id_credit;
+    private int id_cust;
+    private String name;
+    private String loanpurpose;
+    private String term;
+    private String firstpay;
+    private int sum;
 
     public Credit(int id_cust, String name, String loanpurpose, String term, String firstpay, int sum) {
         this.id_cust = id_cust;
