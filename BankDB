@@ -1,0 +1,317 @@
+-- --------------------------------------------------------
+-- Хост:                         127.0.0.1
+-- Версия сервера:               10.3.13-MariaDB-log - mariadb.org binary distribution
+-- Операционная система:         Win64
+-- HeidiSQL Версия:              10.2.0.5599
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- Дамп структуры базы данных bank
+CREATE DATABASE IF NOT EXISTS `bank` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
+USE `bank`;
+
+-- Дамп структуры для таблица bank.credit
+CREATE TABLE IF NOT EXISTS `credit` (
+  `id_credit` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cust` int(11) NOT NULL,
+  `name` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `loanpurpose` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `term` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `firstpay` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sum` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_credit`),
+  KEY `id_cust` (`id_cust`),
+  KEY `name` (`name`),
+  CONSTRAINT `credit_ibfk_1` FOREIGN KEY (`id_cust`) REFERENCES `cust` (`id_cust`),
+  CONSTRAINT `credit_ibfk_2` FOREIGN KEY (`name`) REFERENCES `kindcredit` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Дамп данных таблицы bank.credit: ~4 rows (приблизительно)
+/*!40000 ALTER TABLE `credit` DISABLE KEYS */;
+INSERT INTO `credit` (`id_credit`, `id_cust`, `name`, `loanpurpose`, `term`, `firstpay`, `sum`) VALUES
+	(1, 1, 'mortgage', 'paying for real estate', '5', '4500', 70000),
+	(2, 2, 'mortgage', 'paying for real estate', '5', '4500', 70000),
+	(3, 100, 'business credit', 'paying for opening a coffee stand', '1', '4500', 30000),
+	(4, 4, 'study credit', 'paying for study in a univercity', '10', '1000', 70000);
+/*!40000 ALTER TABLE `credit` ENABLE KEYS */;
+
+-- Дамп структуры для таблица bank.cust
+CREATE TABLE IF NOT EXISTS `cust` (
+  `id_cust` int(11) NOT NULL AUTO_INCREMENT,
+  `id_employee` int(11) NOT NULL,
+  PRIMARY KEY (`id_cust`),
+  KEY `id_employee` (`id_employee`),
+  CONSTRAINT `cust_ibfk_1` FOREIGN KEY (`id_employee`) REFERENCES `employee` (`id_employee`)
+) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Дамп данных таблицы bank.cust: ~123 rows (приблизительно)
+/*!40000 ALTER TABLE `cust` DISABLE KEYS */;
+INSERT INTO `cust` (`id_cust`, `id_employee`) VALUES
+	(1, 1),
+	(2, 1),
+	(3, 2),
+	(4, 2),
+	(5, 3),
+	(6, 3),
+	(7, 3),
+	(8, 4),
+	(9, 4),
+	(10, 4),
+	(11, 5),
+	(12, 5),
+	(13, 5),
+	(14, 5),
+	(15, 5),
+	(16, 5),
+	(17, 5),
+	(18, 5),
+	(19, 5),
+	(20, 5),
+	(21, 5),
+	(22, 5),
+	(23, 5),
+	(24, 5),
+	(25, 5),
+	(26, 5),
+	(27, 5),
+	(28, 5),
+	(29, 5),
+	(30, 5),
+	(31, 5),
+	(32, 5),
+	(33, 5),
+	(34, 5),
+	(35, 5),
+	(36, 5),
+	(37, 5),
+	(38, 5),
+	(39, 5),
+	(40, 5),
+	(41, 5),
+	(42, 5),
+	(43, 5),
+	(44, 5),
+	(45, 5),
+	(46, 5),
+	(47, 5),
+	(48, 5),
+	(49, 5),
+	(50, 5),
+	(51, 5),
+	(52, 5),
+	(53, 5),
+	(54, 5),
+	(55, 5),
+	(56, 5),
+	(57, 5),
+	(58, 5),
+	(59, 5),
+	(60, 5),
+	(61, 5),
+	(62, 5),
+	(63, 5),
+	(64, 5),
+	(65, 5),
+	(66, 5),
+	(67, 5),
+	(68, 5),
+	(69, 5),
+	(70, 5),
+	(71, 5),
+	(72, 5),
+	(73, 5),
+	(74, 5),
+	(75, 5),
+	(76, 5),
+	(77, 5),
+	(78, 5),
+	(79, 5),
+	(80, 5),
+	(81, 5),
+	(82, 5),
+	(83, 5),
+	(84, 5),
+	(85, 5),
+	(86, 5),
+	(87, 5),
+	(88, 5),
+	(89, 5),
+	(90, 5),
+	(91, 5),
+	(92, 5),
+	(93, 5),
+	(94, 5),
+	(95, 5),
+	(96, 5),
+	(97, 5),
+	(98, 5),
+	(99, 5),
+	(100, 5),
+	(101, 5),
+	(102, 5),
+	(103, 5),
+	(104, 5),
+	(105, 5),
+	(106, 5),
+	(107, 5),
+	(108, 5),
+	(109, 5),
+	(110, 5),
+	(111, 5),
+	(112, 5),
+	(113, 5),
+	(114, 5),
+	(115, 5),
+	(116, 5),
+	(117, 5),
+	(118, 5),
+	(119, 5),
+	(120, 5),
+	(121, 5),
+	(122, 5),
+	(123, 5);
+/*!40000 ALTER TABLE `cust` ENABLE KEYS */;
+
+-- Дамп структуры для таблица bank.employee
+CREATE TABLE IF NOT EXISTS `employee` (
+  `id_employee` int(11) NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `department` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id_employee`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Дамп данных таблицы bank.employee: ~5 rows (приблизительно)
+/*!40000 ALTER TABLE `employee` DISABLE KEYS */;
+INSERT INTO `employee` (`id_employee`, `fullname`, `department`) VALUES
+	(1, 'Volkov Aleksei Anatolievich', 'First department'),
+	(2, 'Alekseev Andrey Antonovich', 'First department'),
+	(3, 'Lebedev Arkadiy Arsenievich', 'First department'),
+	(4, 'Semenov Artem Arturovich', 'Second department'),
+	(5, 'Egorov Boris Vadimovich', 'Second department');
+/*!40000 ALTER TABLE `employee` ENABLE KEYS */;
+
+-- Дамп структуры для таблица bank.entity
+CREATE TABLE IF NOT EXISTS `entity` (
+  `id_cust` int(11) NOT NULL AUTO_INCREMENT,
+  `companyname` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `chief` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adress` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `balance` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `numberreference` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_cust`)
+) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Дамп данных таблицы bank.entity: ~2 rows (приблизительно)
+/*!40000 ALTER TABLE `entity` DISABLE KEYS */;
+INSERT INTO `entity` (`id_cust`, `companyname`, `chief`, `adress`, `balance`, `numberreference`) VALUES
+	(100, 'Sipsco Shipping and Recieving', 'Sips', 'Nikolskaya st.2', '670000', 1),
+	(101, 'Hyperion RnD', 'Jack', 'Malaya Morskaya st. 97', '999999', 2);
+/*!40000 ALTER TABLE `entity` ENABLE KEYS */;
+
+-- Дамп структуры для таблица bank.family
+CREATE TABLE IF NOT EXISTS `family` (
+  `id_person` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cust` int(11) NOT NULL,
+  `fullname` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `statut_person` int(11) NOT NULL,
+  PRIMARY KEY (`id_person`),
+  KEY `id_cust` (`id_cust`),
+  CONSTRAINT `family_ibfk_1` FOREIGN KEY (`id_cust`) REFERENCES `physicalperson` (`id_cust`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Дамп данных таблицы bank.family: ~0 rows (приблизительно)
+/*!40000 ALTER TABLE `family` DISABLE KEYS */;
+/*!40000 ALTER TABLE `family` ENABLE KEYS */;
+
+-- Дамп структуры для таблица bank.kindcredit
+CREATE TABLE IF NOT EXISTS `kindcredit` (
+  `name` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `percent` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `interestondebt` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Дамп данных таблицы bank.kindcredit: ~3 rows (приблизительно)
+/*!40000 ALTER TABLE `kindcredit` DISABLE KEYS */;
+INSERT INTO `kindcredit` (`name`, `percent`, `interestondebt`) VALUES
+	('business credit', '10', '10'),
+	('mortgage', '20', '5'),
+	('study credit', '5', '5');
+/*!40000 ALTER TABLE `kindcredit` ENABLE KEYS */;
+
+-- Дамп структуры для таблица bank.paidof
+CREATE TABLE IF NOT EXISTS `paidof` (
+  `number_account` int(11) NOT NULL AUTO_INCREMENT,
+  `number_sch` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sum_paid` int(11) DEFAULT NULL,
+  `date` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`number_account`),
+  KEY `number_sch` (`number_sch`),
+  CONSTRAINT `paidof_ibfk_1` FOREIGN KEY (`number_sch`) REFERENCES `schedule` (`number_sch`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Дамп данных таблицы bank.paidof: ~4 rows (приблизительно)
+/*!40000 ALTER TABLE `paidof` DISABLE KEYS */;
+INSERT INTO `paidof` (`number_account`, `number_sch`, `sum_paid`, `date`) VALUES
+	(1, '1', 9000, 'march'),
+	(2, '2', 9000, 'april'),
+	(3, '3', 9000, 'april'),
+	(4, '4', 9000, 'march');
+/*!40000 ALTER TABLE `paidof` ENABLE KEYS */;
+
+-- Дамп структуры для таблица bank.physicalperson
+CREATE TABLE IF NOT EXISTS `physicalperson` (
+  `id_cust` int(11) NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adress` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `balance` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pasport` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dateofbirth` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id_cust`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Дамп данных таблицы bank.physicalperson: ~11 rows (приблизительно)
+/*!40000 ALTER TABLE `physicalperson` DISABLE KEYS */;
+INSERT INTO `physicalperson` (`id_cust`, `fullname`, `adress`, `balance`, `pasport`, `dateofbirth`) VALUES
+	(1, 'Ivanov Aleksandr Alekseevich', 'First of May st. 11', '6397', 'ER829109', '13.05.1984'),
+	(2, 'Smirnov Aleksei Anatolievich', 'Antonova st. 12', '18930', 'ET166460', '12.07.1972'),
+	(3, 'Kuznezov Andrey Antonovich', 'Mizkevicha st.13', '36864', 'PO431039', '14.03.1991'),
+	(4, 'Popov Arkadiy Arsenievich', 'Gorbunova st. 14', '31438', 'JU236474', '23.06.1994'),
+	(5, 'Vasiliev Artem Arturovich', 'Grekova st.15', '49378', 'PK311478', '22.08.1982'),
+	(6, 'Petrov Boris Vadimovich', 'Dobrohotova st.16', '35839', 'DE529792', '10.03.1983'),
+	(7, 'Sokolov Valentin Valerievich', 'Kashenko st. 17', '20893', 'RE929805', '15.06.1972'),
+	(8, 'Michailov Valeriy Vasilievich', 'Kurchatogo st. 18', '13395', 'PO302582', '17.04.1994'),
+	(9, 'Novikov Viktor Vitaliy', 'Arhipenko st. 19', '20895', 'HY217959', '29.02.1995'),
+	(10, 'Fedorov Vladimir Vladislavovich', 'Goroviza st. 14', '29836', 'VR532310', '10.03.1978'),
+	(11, 'Morozov Aleksandr Alekseevich', 'First of May st. 1', '11929', 'ER179366', '18.05.1991');
+/*!40000 ALTER TABLE `physicalperson` ENABLE KEYS */;
+
+-- Дамп структуры для таблица bank.schedule
+CREATE TABLE IF NOT EXISTS `schedule` (
+  `number_sch` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_credit` int(11) DEFAULT NULL,
+  `sum` int(11) DEFAULT NULL,
+  `month_pay` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`number_sch`),
+  KEY `id_credit` (`id_credit`),
+  CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`id_credit`) REFERENCES `credit` (`id_credit`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Дамп данных таблицы bank.schedule: ~4 rows (приблизительно)
+/*!40000 ALTER TABLE `schedule` DISABLE KEYS */;
+INSERT INTO `schedule` (`number_sch`, `id_credit`, `sum`, `month_pay`) VALUES
+	('1', 1, 70000, '4500'),
+	('2', 2, 70000, '4500'),
+	('3', 3, 30000, '4500'),
+	('4', 4, 70000, '1000');
+/*!40000 ALTER TABLE `schedule` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
